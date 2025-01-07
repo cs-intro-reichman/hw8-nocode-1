@@ -99,7 +99,7 @@ public class Network {
      * Computes and returns the name of the most popular user in this network:
      * The user who appears the most in the follow lists of all the users.
      */
-    public String mostPopularUser() {
+   /*  public String mostPopularUser() {
         String mostPopular = null;
         int maxCount = -1;
 
@@ -115,21 +115,17 @@ public class Network {
 
         return mostPopular;
     }
+        */
 
     /**
      * Returns the number of times that the given name appears in the follows lists
      * of all
      * the users in this network. Note: A name can appear 0 or 1 times in each list.
      */
-    private int followeeCount(String name) {
-        int count = 0;
-        for (User user : users) {
-            if (user != null && user.isFollowing(name)) {
-                count++;
-            }
-        }
+  /*   private int followeeCount(String name) {
+     
         return count;
-    }
+    } */
 
     // Returns a textual description of all the users in this network, and who they
     // follow.
