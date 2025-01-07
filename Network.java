@@ -38,15 +38,25 @@ public class Network {
     *  If the given name is already a user in this network, does nothing and returns false;
     *  Otherwise, creates a new user with the given name, adds the user to this network, and returns true. */
     public boolean addUser(String name) {
-        //// Replace the following statement with your code
-        return false;
+        if (userCount >= users.length) {
+            return false;
+        }
+        for (int i = 0; i < userCount; i++) {
+            if (users[i].getName().equals(name)) {
+                return false;
+            }
+        }
+        users[userCount++] = new User(name);
+        return true;
     }
+    
 
     /** Makes the user with name1 follow the user with name2. If successful, returns true.
      *  If any of the two names is not a user in this network,
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
         //// Replace the following statement with your code
+       
         return false;
     }
     
