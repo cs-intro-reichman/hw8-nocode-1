@@ -32,8 +32,9 @@ public class Network {
      *  If there is no such user, returns null.
      *  Notice that the method receives a String, and returns a User object. */
     public User getUser(String name) {
+        String lowerCaseName = name.toLowerCase();
         for (int i = 0; i < userCount; i++) {
-            if (users[i].getName().equals(name)) {
+            if (users[i].getName().toLowerCase().equals(lowerCaseName)) {
                 return users[i];
             }
         }
@@ -97,11 +98,15 @@ public class Network {
     /** Computes and returns the name of the most popular user in this network: 
      *  The user who appears the most in the follow lists of all the users. */
     public String mostPopularUser() {
-        //// Replace the following statement with your code
         String mostPopular = null;
         int maxCount = -1;
         for (int i = 0; i < userCount; i++) {
-            int count = followeeCount(users[i].getName());
+            int count = 0;
+            for (int j = 0; j < userCount; j++) {
+                if (users[j].follows(users[i].getName())) {
+                    count++;
+                }
+            }
             if (count > maxCount) {
                 maxCount = count;
                 mostPopular = users[i].getName();
@@ -127,6 +132,7 @@ public class Network {
     public String toString() {
        //// Replace the following statement with your code
        StringBuilder sb = new StringBuilder();
+       sb.append("Network:\n");
        for (int i = 0; i < userCount; i++) {
            sb.append(users[i].toString()).append("\n");
        }
