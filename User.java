@@ -94,7 +94,6 @@
             }
         }
         return mutualCount;
-         //// Replace the following statement with your code
     }
 
     /** Checks is this user is a friend of the other user.
