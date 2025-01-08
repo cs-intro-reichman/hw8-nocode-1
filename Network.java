@@ -6,11 +6,17 @@ public class Network {
     private User[] users;  // the users in this network (an array of User objects)
     private int userCount; // actual number of users in this network
 
+
+    public int getUserCount(){
+        return this.userCount;
+    }
+
     /** Creates a network with a given maximum number of users. */
     public Network(int maxUserCount) {
         this.users = new User[maxUserCount];
         this.userCount = 0;
     }
+
 
     /** Creates a network  with some users. The only purpose of this constructor is 
      *  to allow testing the toString and getUser methods, before implementing other methods. */
@@ -22,14 +28,15 @@ public class Network {
         userCount = 3;
     }
 
-    public int getUserCount() {
-        return this.userCount;
-    }
     /** Finds in this network, and returns, the user that has the given name.
      *  If there is no such user, returns null.
      *  Notice that the method receives a String, and returns a User object. */
     public User getUser(String name) {
-        //// Replace the following statement with your code
+        for (int i = 0; i < userCount; i++) {
+            if (users[i].getName().equals(name)) {
+                return users[i];
+            }
+        }
         return null;
     }
 
