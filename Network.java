@@ -63,8 +63,9 @@ public class Network {
      *  If any of the two names is not a user in this network,
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
-        //// Replace the following statement with your code
-        /// 
+        if (name1 == null || name2 == null || name1.equals(name2)) {
+            return false;
+        }
         User user1 = getUser(name1);
         User user2 = getUser(name2);
         if (user1 == null || user2 == null) {
@@ -133,11 +134,25 @@ public class Network {
 
     // Returns a textual description of all the users in this network, and who they follow.
   
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("Network:\n");
         for (int i = 0; i < userCount; i++) {
-            sb.append(users[i].toString()).append("\n");
+            sb.append(users[i].getName()).append(" -> ");
+            String[] followees = users[i].getfFollows();
+            boolean first = true;
+            for (String followee : followees) {
+                if (followee != null) {
+                    if (!first) {
+                        sb.append(" ");
+                    }
+                    sb.append(followee);
+                    first = false;
+                }
+            }
+            sb.append("\n");
         }
-        return sb.toString();
+        return sb.toString().trim();
     }
 }
